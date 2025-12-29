@@ -1,0 +1,35 @@
+{
+  // TypeScript configuration for Node.js environment files
+  "compilerOptions": {
+    // JavaScript language version for emitted JavaScript and include compatible library declarations
+    "target": "ES2022",
+    // Library files to be included in the compilation
+    "lib": ["ES2023"],
+    // Module system for the program
+    "module": "ESNext",
+    // Skip type checking of declaration files
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    // Module resolution strategy
+    "moduleResolution": "bundler",
+    // Allow importing .ts and .tsx files with extensions
+    "allowImportingTsExtensions": true,
+    // Ensure that each file can be safely transpiled without relying on other imports
+    "isolatedModules": true,
+    // Ensure every file is treated as a module
+    "moduleDetection": "force",
+    // Do not emit output files
+    "noEmit": true,
+
+    /* Linting */
+    // Enable all strict type checking options
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    // Report errors for fallthrough cases in switch statements
+    "noFallthroughCasesInSwitch": true
+  },
+  // Files to be included in the compilation
+  "include": ["vite.config.ts"]
+}

@@ -1,0 +1,23 @@
+{
+  // TypeScript configuration file that references other config files
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    // Base URL for module resolution
+    "baseUrl": ".",
+    // Path mapping for module imports
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    // Disable strict type checking options for faster development
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noUnusedLocals": false,
+    "strictNullChecks": false
+  }
+}

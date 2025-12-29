@@ -1,0 +1,20 @@
+# Node.js
+node_modules/
+dist/
+.DS_Store
+
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+.env
+salespulse.db
+
+# VS Code
+.vscode/
+
+# Other
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,46 @@
+{
+  // TypeScript configuration for the application code
+  "compilerOptions": {
+    // JavaScript language version for emitted JavaScript and include compatible library declarations
+    "target": "ES2020",
+    // Emit actual class fields instead of Object.defineProperty
+    "useDefineForClassFields": true,
+    // Library files to be included in the compilation
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    // Module system for the program
+    "module": "ESNext",
+    // Skip type checking of declaration files
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    // Module resolution strategy
+    "moduleResolution": "bundler",
+    // Allow importing .ts and .tsx files with extensions
+    "allowImportingTsExtensions": true,
+    // Ensure that each file can be safely transpiled without relying on other imports
+    "isolatedModules": true,
+    // Ensure every file is treated as a module
+    "moduleDetection": "force",
+    // Do not emit output files
+    "noEmit": true,
+    // Support JSX in .tsx files
+    "jsx": "react-jsx",
+
+    /* Linting */
+    // Disable all strict type checking options for faster development
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": false,
+
+    // Base directory to resolve non-relative module names
+    "baseUrl": ".",
+    // Path mapping for module imports
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  // Files to be included in the compilation
+  "include": ["src"]
+}
