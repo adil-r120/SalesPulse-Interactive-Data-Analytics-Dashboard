@@ -83,12 +83,19 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# CORS configuration - Allow all origins for development
+# CORS configuration
+origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://salespulse-three.vercel.app", # Vercel Frontend
+    "https://salespulse-interactive-data-analytics.onrender.com" # Self
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for development
-    allow_credentials=False,  # Set to False when using wildcard
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_origins=origins, # Explicit origins
+    allow_credentials=True, # Allow credentials
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
