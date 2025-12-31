@@ -234,7 +234,7 @@ const AdminDashboard = () => {
             </div>
 
             <Tabs defaultValue="users" className="w-full">
-                <TabsList className="grid w-full grid-cols-4">
+                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto">
                     <TabsTrigger value="users">👥 Users</TabsTrigger>
                     <TabsTrigger value="activity">📊 Activity</TabsTrigger>
                     <TabsTrigger value="sessions">🖥️ Sessions</TabsTrigger>
@@ -279,9 +279,9 @@ const AdminDashboard = () => {
                     {selectedUsers.size > 0 && (
                         <Card className="bg-primary/5 border-primary/20">
                             <CardContent className="pt-6">
-                                <div className="flex items-center justify-between">
-                                    <p className="text-sm font-medium">{selectedUsers.size} users selected</p>
-                                    <div className="flex gap-2">
+                                <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 sm:gap-0">
+                                    <p className="text-sm font-medium mb-2 sm:mb-0">{selectedUsers.size} users selected</p>
+                                    <div className="flex flex-wrap gap-2 justify-center sm:justify-end">
                                         <Select onValueChange={handleBulkRoleChange}>
                                             <SelectTrigger className="w-[140px]">
                                                 <UserCog className="h-4 w-4 mr-2" />
@@ -329,7 +329,7 @@ const AdminDashboard = () => {
                             <CardDescription>Manage all registered users and their permissions</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div className="rounded-md border">
+                            <div className="rounded-md border overflow-x-auto">
                                 <Table>
                                     <TableHeader>
                                         <TableRow>
@@ -465,7 +465,7 @@ const AdminDashboard = () => {
 
                             <div className="mt-8">
                                 <h3 className="text-lg font-medium mb-4">Recent Login Attempts</h3>
-                                <div className="rounded-md border">
+                                <div className="rounded-md border overflow-x-auto">
                                     <Table>
                                         <TableHeader>
                                             <TableRow>

@@ -111,7 +111,7 @@ const Index = () => {
           <div className="space-y-6">
             {/* Header with Date Picker */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <h2 className="text-2xl font-bold tracking-tight">Dashboard Overview</h2>
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight">Dashboard Overview</h2>
               <div className="flex items-center gap-2">
                 <Popover>
                   <PopoverTrigger asChild>
@@ -119,7 +119,7 @@ const Index = () => {
                       id="date"
                       variant={"outline"}
                       className={cn(
-                        "w-[300px] justify-start text-left font-normal",
+                        "w-full sm:w-[300px] justify-start text-left font-normal",
                         !date && "text-muted-foreground"
                       )}
                     >

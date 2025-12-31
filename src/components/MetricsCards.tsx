@@ -221,7 +221,7 @@ const MetricsCards = ({ data }: MetricsCardsProps) => {
                   <p className="text-sm font-medium text-muted-foreground">{metric.title}</p>
 
                   {/* Metric value */}
-                  <p className="text-2xl font-bold text-foreground mt-1">{metric.value}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-foreground mt-1">{metric.value}</p>
 
                   {/* Change indicator with trend icon */}
                   <div className="flex items-center mt-2">

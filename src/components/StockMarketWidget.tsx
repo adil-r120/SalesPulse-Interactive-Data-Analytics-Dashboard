@@ -445,9 +445,9 @@ const StockMarketWidget = () => {
         ) : stockData ? (
           <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
             {/* Stock header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-1">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+            <div className="flex flex-row items-center justify-between px-1 gap-2">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 truncate pr-2">
                   {stockData.companyName}
                 </h3>
                 <div className="flex items-center gap-2 mt-0.5">
@@ -467,8 +467,8 @@ const StockMarketWidget = () => {
               </div>
 
               {/* Price Display */}
-              <div className="mt-3 sm:mt-0 text-right">
-                <p className="text-3xl font-bold tracking-tighter tabular-nums transition-all duration-300">
+              <div className="text-right shrink-0">
+                <p className="text-2xl sm:text-3xl font-bold tracking-tighter tabular-nums transition-all duration-300">
                   {formatStockCurrency(stockData.currentPrice, stockData.symbol, stockData.currency)}
                 </p>
                 <div className="flex items-center justify-end gap-1.5 mt-1">
@@ -494,7 +494,7 @@ const StockMarketWidget = () => {
             </div>
 
             {/* Sparkline chart */}
-            <div className="h-32 sm:h-44 w-full bg-gradient-to-b from-background to-muted/20 rounded-xl p-0.5 border border-border/40 shadow-inner relative overflow-hidden group">
+            <div className="h-36 sm:h-44 w-full bg-gradient-to-b from-background to-muted/20 rounded-xl p-0.5 border border-border/40 shadow-inner relative overflow-hidden group">
               <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)] dark:bg-grid-slate-700/25 pointer-events-none"></div>
 
               <ResponsiveContainer width="100%" height="100%">
@@ -564,9 +564,9 @@ const StockMarketWidget = () => {
                     setCurrentIndex(idx);
                     setIsPlaying(false);
                   }}
-                  className={`transition-all duration-500 rounded-full p-0 border-none outline-none ${idx === currentIndex
-                    ? 'w-6 h-1.5 bg-primary shadow-sm shadow-primary/30'
-                    : 'w-1.5 h-1.5 bg-muted-foreground/20 hover:bg-primary/40'
+                  className={`transition-all duration-500 rounded-full !border-none !outline-none !p-0 ${idx === currentIndex
+                    ? '!w-6 !h-1.5 bg-primary shadow-sm shadow-primary/30'
+                    : '!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] bg-muted-foreground/20 hover:bg-primary/40'
                     }`}
                   title={stock.name}
                   aria-label={`Switch to ${stock.name}`}

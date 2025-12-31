@@ -195,91 +195,91 @@ const SalesChart = () => {
         </div>
 
         {/* Chart */}
-        <ResponsiveContainer width="100%" height={350}>
-          {formattedRevenueTrend.length > 0 ? (
-            <LineChart data={formattedRevenueTrend} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+        <div className="h-[300px] sm:h-[350px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            {formattedRevenueTrend.length > 0 ? (
+              <LineChart data={formattedRevenueTrend} margin={{ top: 20, right: 10, left: 0, bottom: 20 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
 
-              <XAxis
-                dataKey="month"
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fontSize: 12 }}
-                tickMargin={10}
-                interval={0}
-              />
+                <XAxis
+                  dataKey="month"
+                  stroke="hsl(var(--muted-foreground))"
+                  tick={{ fontSize: 10 }}
+                  tickMargin={10}
+                  interval="preserveStartEnd"
+                />
 
-              <YAxis
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fontSize: 12 }}
-                tickFormatter={(value) => {
-                  if (currency === 'INR') return `₹${(value / 100000).toFixed(0)}L`;
-                  return `${currency === 'EUR' ? '€' : '$'}${(value / 1000).toFixed(0)}K`
-                }}
-                tickMargin={10}
-                width={60}
-              />
+                <YAxis
+                  stroke="hsl(var(--muted-foreground))"
+                  tick={{ fontSize: 10 }}
+                  tickFormatter={(value) => {
+                    if (currency === 'INR') return `₹${(value / 100000).toFixed(0)}L`;
+                    return `${currency === 'EUR' ? '€' : '$'}${(value / 1000).toFixed(0)}K`
+                  }}
+                  tickMargin={5}
+                  width={45}
+                />
 
-              <Tooltip content={<CustomTooltip currency={currency} />} />
+                <Tooltip content={<CustomTooltip currency={currency} />} />
 
-              <defs>
-                <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--sales-primary))" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="hsl(var(--sales-primary))" stopOpacity={0.1} />
-                </linearGradient>
-              </defs>
+                <defs>
+                  <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="hsl(var(--sales-primary))" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="hsl(var(--sales-primary))" stopOpacity={0.1} />
+                  </linearGradient>
+                </defs>
 
+                <Line
+                  type="monotone"
+                  dataKey="revenue"
+                  stroke="hsl(var(--sales-primary))"
+                  strokeWidth={4}
+                  dot={{ fill: 'hsl(var(--sales-primary))', strokeWidth: 2, r: 4 }}
+                  activeDot={{ r: 8, strokeWidth: 2, fill: 'hsl(var(--background))' }}
+                  name="Revenue"
+                  animationDuration={500}
+                  animationEasing="ease-out"
+                />
 
+                <Line
+                  type="monotone"
+                  dataKey="sales"
+                  stroke="hsl(var(--sales-secondary))"
+                  strokeWidth={3}
+                  strokeDasharray="5 5"
+                  dot={{ fill: 'hsl(var(--sales-secondary))', strokeWidth: 2, r: 3 }}
+                  activeDot={{ r: 6, strokeWidth: 2, fill: 'hsl(var(--background))' }}
+                  yAxisId="right"
+                  name="Sales Count"
+                  animationDuration={500}
+                  animationEasing="ease-out"
+                />
 
-              <Line
-                type="monotone"
-                dataKey="revenue"
-                stroke="hsl(var(--sales-primary))"
-                strokeWidth={4}
-                dot={{ fill: 'hsl(var(--sales-primary))', strokeWidth: 2, r: 6 }}
-                activeDot={{ r: 10, strokeWidth: 2, fill: 'hsl(var(--background))' }}
-                name="Revenue"
-                animationDuration={500}
-                animationEasing="ease-out"
-              />
+                <YAxis
+                  yAxisId="right"
+                  orientation="right"
+                  stroke="hsl(var(--muted-foreground))"
+                  tick={{ fontSize: 10 }}
+                  tickMargin={5}
+                  width={30}
+                />
 
-              <Line
-                type="monotone"
-                dataKey="sales"
-                stroke="hsl(var(--sales-secondary))"
-                strokeWidth={3}
-                strokeDasharray="5 5"
-                dot={{ fill: 'hsl(var(--sales-secondary))', strokeWidth: 2, r: 5 }}
-                activeDot={{ r: 8, strokeWidth: 2, fill: 'hsl(var(--background))' }}
-                yAxisId="right"
-                name="Sales Count"
-                animationDuration={500}
-                animationEasing="ease-out"
-              />
-
-              <YAxis
-                yAxisId="right"
-                orientation="right"
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fontSize: 12 }}
-                tickMargin={10}
-                width={40}
-              />
-
-              <Legend
-                verticalAlign="top"
-                height={40}
-                formatter={(value) => <span className="text-foreground text-xs font-medium">{value}</span>}
-              />
-            </LineChart>
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center">
-                <p className="text-muted-foreground">No revenue data available</p>
-                <p className="text-sm text-muted-foreground mt-2">Add sales records to see revenue trends</p>
+                <Legend
+                  verticalAlign="top"
+                  height={36}
+                  formatter={(value) => <span className="text-foreground text-[10px] font-medium">{value}</span>}
+                />
+              </LineChart>
+            ) : (
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center">
+                  <p className="text-muted-foreground">No revenue data available</p>
+                  <p className="text-sm text-muted-foreground mt-2">Add sales records to see revenue trends</p>
+                </div>
               </div>
-            </div>
-          )}
-        </ResponsiveContainer>
+            )}
+          </ResponsiveContainer>
+        </div>
 
         {/* Legend */}
         <div className="flex justify-center mt-2 text-xs text-muted-foreground">
@@ -346,101 +346,103 @@ const SalesChart = () => {
         </div>
 
         {/* Chart */}
-        <ResponsiveContainer width="100%" height={350}>
-          {chartType === 'pie' ? (
-            <PieChart>
-              <Pie
+        <div className="h-[300px] sm:h-[350px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            {chartType === 'pie' ? (
+              <PieChart>
+                <Pie
+                  data={sortedSalesByCategory}
+                  cx="50%"
+                  cy="45%"
+                  innerRadius={55}
+                  outerRadius={90}
+                  dataKey="value"
+                  label={({ name, percent, cx, cy, midAngle, innerRadius, outerRadius }) => {
+                    const percentage = (percent * 100).toFixed(1);
+                    // if (parseFloat(percentage) < 2) return null; // Showing all labels now
+
+                    const RADIAN = Math.PI / 180;
+                    // Push labels further out (radius * 1.6) for better spacing
+                    const radius = innerRadius + (outerRadius - innerRadius) * 1.6;
+                    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+                    // Capitalize category name
+                    const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+
+                    return (
+                      <text
+                        x={x}
+                        y={y}
+                        fill="hsl(var(--foreground))"
+                        textAnchor={x > cx ? 'start' : 'end'}
+                        dominantBaseline="central"
+                        style={{ fontSize: '11px', fontWeight: 600 }}
+                      >
+                        {`${capitalizedName} ${percentage}%`}
+                      </text>
+                    );
+                  }}
+                  labelLine={true}
+                >
+                  {sortedSalesByCategory.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+
+                <Tooltip content={<CategoryTooltip currency={currency} />} />
+
+                <Legend
+                  layout="horizontal"
+                  verticalAlign="bottom"
+                  align="center"
+                  formatter={(value, entry, index) => {
+                    const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
+                    return (
+                      <span className="text-xs text-foreground mr-2">{capitalizedValue}</span>
+                    );
+                  }}
+                />
+              </PieChart>
+            ) : (
+              <BarChart
                 data={sortedSalesByCategory}
-                cx="45%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={100}
-                dataKey="value"
-                label={({ name, percent, cx, cy, midAngle, innerRadius, outerRadius }) => {
-                  const percentage = (percent * 100).toFixed(1);
-                  // if (parseFloat(percentage) < 2) return null; // Showing all labels now
-
-                  const RADIAN = Math.PI / 180;
-                  // Push labels further out (radius * 1.6) for better spacing
-                  const radius = innerRadius + (outerRadius - innerRadius) * 1.6;
-                  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-                  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-                  // Capitalize category name
-                  const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-
-                  return (
-                    <text
-                      x={x}
-                      y={y}
-                      fill="hsl(var(--foreground))"
-                      textAnchor={x > cx ? 'start' : 'end'}
-                      dominantBaseline="central"
-                      style={{ fontSize: '11px', fontWeight: 600 }}
-                    >
-                      {`${capitalizedName} ${percentage}%`}
-                    </text>
-                  );
-                }}
-                labelLine={true}
+                margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
               >
-                {sortedSalesByCategory.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
 
-              <Tooltip content={<CategoryTooltip currency={currency} />} />
+                <XAxis
+                  dataKey="name"
+                  angle={-45}
+                  textAnchor="end"
+                  height={60}
+                  tick={{ fontSize: 10 }}
+                  tickMargin={10}
+                />
 
-              <Legend
-                layout="vertical"
-                verticalAlign="middle"
-                align="right"
-                formatter={(value, entry, index) => {
-                  const capitalizedValue = value.charAt(0).toUpperCase() + value.slice(1);
-                  return (
-                    <span className="text-xs text-foreground">{capitalizedValue}</span>
-                  );
-                }}
-              />
-            </PieChart>
-          ) : (
-            <BarChart
-              data={sortedSalesByCategory}
-              margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+                <YAxis
+                  stroke="hsl(var(--muted-foreground))"
+                  tick={{ fontSize: 10 }}
+                  tickFormatter={(value) => {
+                    if (currency === 'INR') return `₹${(value / 1000).toFixed(0)}K`;
+                    return `${currency === 'EUR' ? '€' : '$'}${(value / 1000).toFixed(0)}K`
+                  }}
+                  width={45}
+                />
 
-              <XAxis
-                dataKey="name"
-                angle={-45}
-                textAnchor="end"
-                height={60}
-                tick={{ fontSize: 12 }}
-                tickMargin={10}
-              />
+                <Tooltip content={<CategoryTooltip currency={currency} />} />
 
-              <YAxis
-                stroke="hsl(var(--muted-foreground))"
-                tick={{ fontSize: 12 }}
-                tickFormatter={(value) => {
-                  if (currency === 'INR') return `₹${(value / 1000).toFixed(0)}K`;
-                  return `${currency === 'EUR' ? '€' : '$'}${(value / 1000).toFixed(0)}K`
-                }}
-                width={60}
-              />
-
-              <Tooltip content={<CategoryTooltip currency={currency} />} />
-
-              <Bar dataKey="revenue" name="Revenue">
-                {sortedSalesByCategory.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Bar>
-            </BarChart>
-          )}
-        </ResponsiveContainer>
+                <Bar dataKey="revenue" name="Revenue">
+                  {sortedSalesByCategory.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            )}
+          </ResponsiveContainer>
+        </div>
       </Card>
-    </div>
+    </div >
   );
 };
 

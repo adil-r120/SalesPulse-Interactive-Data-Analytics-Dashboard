@@ -654,9 +654,8 @@ const AIChatbox = () => {
       {/* Main Chat Window */}
       {isOpen && (
         <Card className={`fixed z-40 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border-white/20 backdrop-blur-2xl bg-white/95 dark:bg-slate-950/95 overflow-hidden transition-all duration-300 
-          ${isMinimized ? 'h-16 w-72' : 'h-[600px] w-[400px]'}
-          bottom-24 right-6 rounded-2xl flex flex-col
-          max-w-[calc(100vw-48px)] max-h-[calc(100vh-120px)]
+          ${isMinimized ? 'h-16 w-72' : 'h-[550px] sm:h-[600px] w-[92vw] sm:w-[400px]'}
+          bottom-20 right-4 sm:bottom-24 sm:right-6 rounded-2xl flex flex-col
         `}>
           {/* Header */}
           <div className="flex-shrink-0 px-4 py-3 bg-gradient-to-r from-blue-600 to-violet-700 text-white flex items-center justify-between shadow-md">
@@ -781,7 +780,7 @@ const AIChatbox = () => {
                         {/* Bubble */}
                         <div className={`flex flex-col ${message.sender === 'user' ? 'items-end' : 'items-start'}`}>
                           <div
-                            className={`px-4 py-3 rounded-2xl shadow-sm text-sm leading-relaxed relative ${message.sender === 'user'
+                            className={`px-4 py-3 rounded-2xl shadow-sm text-sm sm:text-base leading-relaxed relative ${message.sender === 'user'
                               ? 'bg-blue-600 text-white rounded-tr-sm'
                               : 'bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-tl-sm'
                               }`}
@@ -898,7 +897,7 @@ const AIChatbox = () => {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask anything..."
-                    className="min-h-[36px] max-h-[120px] py-2 px-1 bg-transparent border-none focus-visible:ring-0 placeholder:text-slate-400 resize-none text-sm dark:text-slate-200"
+                    className="min-h-[36px] max-h-[120px] py-2 px-1 bg-transparent border-none focus-visible:ring-0 placeholder:text-slate-400 resize-none text-base sm:text-sm dark:text-slate-200"
                     rows={1}
                   />
 
