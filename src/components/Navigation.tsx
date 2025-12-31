@@ -67,13 +67,13 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
             {/* Application title and subtitle */}
             <div>
-              <h1 className="text-xl font-bold text-foreground">Sales Analytics</h1>
-              <p className="text-sm text-muted-foreground">Business Intelligence Dashboard</p>
+              <h1 className="text-lg sm:text-xl font-bold text-foreground">Sales Analytics</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Business Intelligence Dashboard</p>
             </div>
           </div>
 
           {/* Navigation Controls Section */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
 
             {/* Desktop Navigation - Hidden on mobile devices */}
             <div className="hidden md:flex space-x-1 bg-muted/50 p-1 rounded-lg">
@@ -101,7 +101,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             </div>
 
             {/* Mobile Navigation - Visible only on mobile devices */}
-            <div className="md:hidden flex items-center space-x-2">
+            <div className="md:hidden flex items-center space-x-1">
               {/* Main navigation tabs for mobile (first 4 tabs) */}
               <div className="flex space-x-1 bg-muted/50 p-1 rounded-lg">
                 {tabs.slice(0, 4).map((tab) => {
@@ -113,15 +113,16 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                       key={tab.id}
                       onClick={() => onTabChange(tab.id)}
                       className={`
-                        flex items-center space-x-1 px-2 py-2 rounded-md text-xs font-medium transition-all duration-200
+                        flex items-center justify-center p-2 rounded-md transition-all duration-200
                         ${activeTab === tab.id
                           ? 'bg-primary text-primary-foreground shadow-glow'
                           : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                         }
                       `}
                     >
-                      <Icon className="w-3 h-3" />
-                      <span className="hidden sm:inline">{tab.label}</span>
+                      <Icon className="w-4 h-4" />
+                      {/* Hidden text label on mobile, icons only */}
+                      <span className="sr-only">{tab.label}</span>
                     </button>
                   );
                 })}
