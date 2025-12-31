@@ -310,7 +310,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
 
                                 <div className="space-y-2">
                                     <Label>Theme</Label>
-                                    <div className="grid grid-cols-3 gap-2">
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                         <Button
                                             variant={theme === 'light' ? 'default' : 'outline'}
                                             className="flex flex-col gap-2 h-auto py-4"
