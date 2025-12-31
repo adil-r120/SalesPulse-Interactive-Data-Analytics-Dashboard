@@ -58,31 +58,55 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
     // Main navigation container with styling
     <nav className="bg-gradient-card border-b border-border/50 shadow-card sticky top-0 z-50 backdrop-blur-md bg-background/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-14 md:h-16">
+        <div className="flex flex-col md:flex-row justify-between md:items-center h-auto min-h-[3.5rem] md:h-16 py-2 md:py-0 transition-all duration-300">
 
-          {/* Logo and Title Section */}
-          <div className="flex items-center space-x-3 hidden md:flex">
-            {/* Logo container with gradient background */}
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-glow">
-              <BarChart3 className="w-6 h-6 text-white" />
+          {/* Row 1: Logo, Title, and Menu (Mobile) */}
+          <div className="flex items-center justify-between w-full md:w-auto">
+            <div className="flex items-center space-x-3">
+              <div className="w-9 h-9 md:w-10 md:h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-glow">
+                <BarChart3 className="w-5 h-5 md:w-6 md:h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-lg sm:text-xl font-bold text-foreground">Sales Analytics</h1>
+                <p className="text-[10px] sm:text-sm text-muted-foreground leading-tight">Business Intelligence Dashboard</p>
+              </div>
             </div>
 
-            {/* Application title and subtitle */}
-            <div>
-              <h1 className="text-lg sm:text-xl font-bold text-foreground hidden sm:block">Sales Analytics</h1>
-              <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Business Intelligence Dashboard</p>
+            {/* Mobile Menu Button - Moved to Top Right nearby Logo */}
+            <div className="md:hidden">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-64 p-2 rounded-xl border-border/50 shadow-xl backdrop-blur-xl bg-background/95">
+                  <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">User Controls</DropdownMenuLabel>
+
+                  <div className="flex items-center justify-around p-2 bg-muted/50 rounded-lg mb-2">
+                    <NotificationCenter />
+                    <UserProfile />
+                  </div>
+
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Theme</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    <Sun className="mr-2 h-4 w-4" /> Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    <Moon className="mr-2 h-4 w-4" /> Dark
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
-          {/* Navigation Controls Section */}
-          <div className="flex items-center space-x-2 sm:space-x-4 w-full md:w-auto justify-end">
-
-            {/* Desktop Navigation - Hidden on mobile devices */}
-            <div className="hidden md:flex space-x-1 bg-muted/50 p-1 rounded-lg">
+          {/* Navigation Controls Section (Desktop) */}
+          <div className="flex items-center space-x-2 sm:space-x-4 w-full md:w-auto justify-end hidden md:flex">
+            {/* Desktop Navigation */}
+            <div className="flex space-x-1 bg-muted/50 p-1 rounded-lg">
               {tabs.map((tab) => {
-                // Get the icon component for this tab
                 const Icon = tab.icon;
-
                 return (
                   <button
                     key={tab.id}
@@ -101,78 +125,8 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                 );
               })}
             </div>
-
-            {/* Mobile Navigation - Visible only on mobile devices (Premium Look) */}
-            <div className="md:hidden w-full flex items-center justify-between px-4">
-
-              {/* Visible Mobile Tabs (Minimalist Icons) - Distributed */}
-              {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
-                const Icon = tab.icon;
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => onTabChange(tab.id)}
-                    className={`
-                      relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
-                      ${isActive
-                        ? 'text-primary bg-primary/10 scale-105'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                      }
-                    `}
-                  >
-                    <Icon className="w-6 h-6 pointer-events-none" />
-                    {isActive && (
-                      <span className="absolute bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
-                    )}
-                    <span className="sr-only">{tab.label}</span>
-                  </button>
-                );
-              })}
-
-              {/* Mobile Menu Button - As the last item in the distributed row */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-10 w-10 text-muted-foreground hover:text-foreground">
-                    <Menu className="h-6 w-6" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-64 p-2 rounded-xl border-border/50 shadow-xl backdrop-blur-xl bg-background/95">
-                  <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Navigation</DropdownMenuLabel>
-                  {tabs.filter(tab => !['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
-                    const Icon = tab.icon;
-                    return (
-                      <DropdownMenuItem
-                        key={tab.id}
-                        onClick={() => onTabChange(tab.id)}
-                        className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer mb-1 ${activeTab === tab.id ? 'bg-primary/10 text-primary font-medium' : 'text-foreground hover:bg-muted'}`}
-                      >
-                        <Icon className="h-5 w-5" />
-                        <span className="text-sm">{tab.label}</span>
-                      </DropdownMenuItem>
-                    );
-                  })}
-
-                  <DropdownMenuSeparator />
-                  <DropdownMenuLabel>Theme</DropdownMenuLabel>
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
-                    <Sun className="mr-2 h-4 w-4" /> Light
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    <Moon className="mr-2 h-4 w-4" /> Dark
-                  </DropdownMenuItem>
-
-                  <DropdownMenuSeparator />
-                  <div className="flex items-center justify-around p-2">
-                    <NotificationCenter />
-                    <UserProfile />
-                  </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-
-            {/* User Controls Section - Hidden on mobile, moved to Dropdown */}
-            <div className="hidden md:flex items-center space-x-2">
+            {/* Desktop User Controls */}
+            <div className="flex items-center space-x-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-9 w-9">
@@ -196,6 +150,33 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               <NotificationCenter />
               <UserProfile />
             </div>
+          </div >
+
+          {/* Row 2: Mobile Navigation Tabs (Distributed Below) */}
+          <div className="md:hidden w-full flex items-center justify-between px-2 mt-2 pt-2 border-t border-border/30 overflow-x-auto no-scrollbar">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => onTabChange(tab.id)}
+                  className={`
+                      relative flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
+                      ${isActive
+                      ? 'text-primary bg-primary/10 scale-105'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                    }
+                    `}
+                >
+                  <Icon className="w-5 h-5 pointer-events-none" />
+                  {isActive && (
+                    <span className="absolute bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
+                  )}
+                  <span className="sr-only">{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div >
       </div >
@@ -204,3 +185,4 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 };
 
 export default Navigation;
+```
