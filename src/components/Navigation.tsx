@@ -67,7 +67,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
             {/* Application title and subtitle */}
             <div>
-              <h1 className="text-lg sm:text-xl font-bold text-foreground">Sales Analytics</h1>
+              <h1 className="text-lg sm:text-xl font-bold text-foreground hidden sm:block">Sales Analytics</h1>
               <p className="text-xs sm:text-sm text-muted-foreground hidden sm:block">Business Intelligence Dashboard</p>
             </div>
           </div>
