@@ -56,9 +56,9 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
   return (
     // Main navigation container with styling
-    <nav className="bg-gradient-card border-b border-border/50 shadow-card">
+    <nav className="bg-gradient-card border-b border-border/50 shadow-card sticky top-0 z-50 backdrop-blur-md bg-background/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 md:h-16">
 
           {/* Logo and Title Section */}
           <div className="flex items-center space-x-3 hidden md:flex">
@@ -75,7 +75,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
           </div>
 
           {/* Navigation Controls Section */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4 w-full md:w-auto justify-end">
 
             {/* Desktop Navigation - Hidden on mobile devices */}
             <div className="hidden md:flex space-x-1 bg-muted/50 p-1 rounded-lg">
@@ -103,10 +103,10 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             </div>
 
             {/* Mobile Navigation - Visible only on mobile devices (Premium Look) */}
-            <div className="md:hidden w-full flex items-center justify-between px-2">
+            <div className="md:hidden w-full flex items-center justify-between px-0">
 
               {/* Visible Mobile Tabs (Minimalist Icons) */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeTab === tab.id;
@@ -117,12 +117,12 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                       className={`
                         relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
                         ${isActive
-                          ? 'text-primary bg-primary/10 scale-110'
+                          ? 'text-primary bg-primary/10 scale-105'
                           : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                         }
                       `}
                     >
-                      <Icon className="w-5 h-5 pointer-events-none" />
+                      <Icon className="w-6 h-6 pointer-events-none" />
                       {isActive && (
                         <span className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
                       )}
