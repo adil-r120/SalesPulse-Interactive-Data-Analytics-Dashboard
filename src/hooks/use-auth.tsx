@@ -28,6 +28,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Base URL for API requests (uses relative URLs with Vite proxy)
 const API_BASE_URL = 'https://salespulse-interactive-data-analytics.onrender.com';
+console.log("DEBUG: Auth URL is:", API_BASE_URL);
 
 // AuthProvider component that wraps the application and provides authentication context
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
