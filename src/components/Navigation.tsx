@@ -185,4 +185,3 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 };
 
 export default Navigation;
-```
