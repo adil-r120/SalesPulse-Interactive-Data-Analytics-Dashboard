@@ -39,7 +39,7 @@ interface NavigationProps {
 
 // Main Navigation component
 const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
-  const { setTheme } = usePreferences();
+  const { theme, setTheme } = usePreferences();
 
   // Define the navigation tabs with their labels and icons
   const tabs = [
@@ -72,8 +72,20 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               </div>
             </div>
 
-            {/* Mobile Menu Button - Moved to Top Right nearby Logo */}
-            <div className="md:hidden">
+            {/* Mobile Actions: Theme Toggle + Menu */}
+            <div className="md:hidden flex items-center gap-2">
+              {/* Direct Theme Toggle */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-9 w-9 text-muted-foreground hover:text-foreground"
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 absolute" />
+                <Moon className="h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 absolute" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-9 w-9 text-muted-foreground hover:text-foreground">
