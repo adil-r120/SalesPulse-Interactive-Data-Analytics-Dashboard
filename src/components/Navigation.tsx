@@ -61,7 +61,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
         <div className="flex justify-between items-center h-16">
 
           {/* Logo and Title Section */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 hidden md:flex">
             {/* Logo container with gradient background */}
             <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-glow">
               <BarChart3 className="w-6 h-6 text-white" />
@@ -103,9 +103,9 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             </div>
 
             {/* Mobile Navigation - Visible only on mobile devices */}
-            <div className="md:hidden flex items-center space-x-1">
+            <div className="md:hidden w-full flex items-center justify-between px-1">
               {/* Visible Mobile Tabs (Icons Only) */}
-              <div className="flex space-x-1 bg-muted/50 p-1 rounded-lg">
+              <div className="flex space-x-2 bg-muted/50 p-1 rounded-lg">
                 {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                   const Icon = tab.icon;
                   return (
@@ -120,7 +120,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                         }
                       `}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-5 h-5" />
                       <span className="sr-only">{tab.label}</span>
                     </button>
                   );
