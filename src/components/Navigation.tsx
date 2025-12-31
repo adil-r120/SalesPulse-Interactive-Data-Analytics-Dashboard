@@ -102,12 +102,10 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
             {/* Mobile Navigation - Visible only on mobile devices */}
             <div className="md:hidden flex items-center space-x-1">
-              {/* Main navigation tabs for mobile (first 4 tabs) */}
+              {/* Visible Mobile Tabs (Icons Only) */}
               <div className="flex space-x-1 bg-muted/50 p-1 rounded-lg">
-                {tabs.slice(0, 4).map((tab) => {
-                  // Get the icon component for this tab
+                {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                   const Icon = tab.icon;
-
                   return (
                     <button
                       key={tab.id}
@@ -121,14 +119,13 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                       `}
                     >
                       <Icon className="w-4 h-4" />
-                      {/* Hidden text label on mobile, icons only */}
                       <span className="sr-only">{tab.label}</span>
                     </button>
                   );
                 })}
               </div>
 
-              {/* Dropdown menu for remaining tabs on mobile */}
+              {/* Dropdown menu for remaining tabs (Reports, Stock) */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -137,15 +134,13 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent align="end">
-                  {tabs.slice(4).map((tab) => {
-                    // Get the icon component for this tab
+                  {tabs.filter(tab => !['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                     const Icon = tab.icon;
-
                     return (
                       <DropdownMenuItem
                         key={tab.id}
                         onClick={() => onTabChange(tab.id)}
-                        className="flex items-center space-x-2"
+                        className={`flex items-center space-x-2 ${activeTab === tab.id ? 'bg-muted' : ''}`}
                       >
                         <Icon className="h-4 w-4" />
                         <span>{tab.label}</span>
