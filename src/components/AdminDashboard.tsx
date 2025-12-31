@@ -335,6 +335,7 @@ const AdminDashboard = () => {
                                         <TableRow>
                                             <TableHead className="w-12">
                                                 <Checkbox
+                                                    className="h-4 w-4 shrink-0 border-primary"
                                                     checked={selectedUsers.size === users.length && users.length > 0}
                                                     onCheckedChange={toggleSelectAll}
                                                 />
@@ -357,6 +358,7 @@ const AdminDashboard = () => {
                                                 <TableRow key={user.id} className="h-12 hover:bg-muted/50">
                                                     <TableCell className="p-2">
                                                         <Checkbox
+                                                            className="h-4 w-4 shrink-0 border-primary"
                                                             checked={selectedUsers.has(user.id)}
                                                             onCheckedChange={() => toggleSelectUser(user.id)}
                                                         />
