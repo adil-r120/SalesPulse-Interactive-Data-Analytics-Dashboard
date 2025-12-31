@@ -103,36 +103,34 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
             </div>
 
             {/* Mobile Navigation - Visible only on mobile devices (Premium Look) */}
-            <div className="md:hidden w-full flex items-center justify-between px-0">
+            <div className="md:hidden w-full flex items-center justify-between px-4">
 
-              {/* Visible Mobile Tabs (Minimalist Icons) */}
-              <div className="flex items-center gap-2">
-                {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = activeTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => onTabChange(tab.id)}
-                      className={`
-                        relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
-                        ${isActive
-                          ? 'text-primary bg-primary/10 scale-105'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                        }
-                      `}
-                    >
-                      <Icon className="w-6 h-6 pointer-events-none" />
-                      {isActive && (
-                        <span className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
-                      )}
-                      <span className="sr-only">{tab.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {/* Visible Mobile Tabs (Minimalist Icons) - Distributed */}
+              {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => onTabChange(tab.id)}
+                    className={`
+                      relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
+                      ${isActive
+                        ? 'text-primary bg-primary/10 scale-105'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                      }
+                    `}
+                  >
+                    <Icon className="w-6 h-6 pointer-events-none" />
+                    {isActive && (
+                      <span className="absolute bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
+                    )}
+                    <span className="sr-only">{tab.label}</span>
+                  </button>
+                );
+              })}
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Button - As the last item in the distributed row */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-10 w-10 text-muted-foreground hover:text-foreground">
