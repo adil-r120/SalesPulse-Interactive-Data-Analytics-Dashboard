@@ -564,7 +564,7 @@ const StockMarketWidget = () => {
                     setCurrentIndex(idx);
                     setIsPlaying(false);
                   }}
-                  className={`transition-all duration-500 rounded-full ${idx === currentIndex
+                  className={`transition-all duration-500 rounded-full p-0 border-none outline-none ${idx === currentIndex
                     ? 'w-6 h-1.5 bg-primary shadow-sm shadow-primary/30'
                     : 'w-1.5 h-1.5 bg-muted-foreground/20 hover:bg-primary/40'
                     }`}
