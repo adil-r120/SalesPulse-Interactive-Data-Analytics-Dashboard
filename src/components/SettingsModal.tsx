@@ -233,7 +233,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
                             <div className="space-y-4">
                                 <h3 className="text-lg font-medium">Display Settings</h3>
 
-                                <div className="flex items-center justify-between p-4 border rounded-lg bg-card">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-card gap-4 sm:gap-0">
                                     <div className="space-y-0.5">
                                         <Label>Currency Symbol</Label>
                                         <div className="text-sm text-muted-foreground">Select your preferred currency</div>
@@ -249,7 +249,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
                                     </select>
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 border rounded-lg bg-card">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-card gap-4 sm:gap-0">
                                     <div className="space-y-0.5">
                                         <Label>Language</Label>
                                         <div className="text-sm text-muted-foreground">Preferred language for AI Chat</div>
@@ -275,7 +275,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
                             <div className="space-y-4">
                                 <h3 className="text-lg font-medium flex items-center gap-2"><Bell className="w-5 h-5" /> Notification Preferences</h3>
 
-                                <div className="flex items-center justify-between p-4 border rounded-lg bg-card">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-card gap-4 sm:gap-0">
                                     <div className="space-y-0.5">
                                         <Label className="text-base">Email Alerts</Label>
                                         <div className="text-sm text-muted-foreground">Receive updates via email</div>
@@ -283,7 +283,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
                                     <Switch checked={emailAlerts} onCheckedChange={setEmailAlerts} />
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 border rounded-lg bg-card">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-card gap-4 sm:gap-0">
                                     <div className="space-y-0.5">
                                         <Label className="text-base">Push Notifications</Label>
                                         <div className="text-sm text-muted-foreground">Receive updates in browser</div>
@@ -291,7 +291,7 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
                                     <Switch checked={pushNotifs} onCheckedChange={setPushNotifs} />
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 border rounded-lg bg-card">
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border rounded-lg bg-card gap-4 sm:gap-0">
                                     <div className="space-y-0.5">
                                         <Label className="text-base">Weekly Digest</Label>
                                         <div className="text-sm text-muted-foreground">Get a summary every Monday</div>
