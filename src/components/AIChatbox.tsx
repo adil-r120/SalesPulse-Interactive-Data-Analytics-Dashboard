@@ -645,7 +645,7 @@ const AIChatbox = () => {
       {/* Floating Toggle Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full shadow-2xl hover:shadow-black/20 hover:scale-110 active:scale-95 transition-all duration-300 bg-gradient-to-r from-blue-600 to-violet-600 border-2 border-white/20"
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 h-10 w-10 md:h-14 md:w-14 rounded-full shadow-2xl hover:shadow-black/20 hover:scale-110 active:scale-95 transition-all duration-300 bg-gradient-to-r from-blue-600 to-violet-600 border-2 border-white/20"
         size="icon"
       >
         {isOpen ? <X className="h-6 w-6 text-white" /> : <MessageCircle className="h-7 w-7 text-white" />}

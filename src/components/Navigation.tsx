@@ -90,10 +90,10 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
 
                   <DropdownMenuSeparator />
                   <DropdownMenuLabel>Theme</DropdownMenuLabel>
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                  <DropdownMenuItem onSelect={() => setTheme("light")}>
                     <Sun className="mr-2 h-4 w-4" /> Light
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                  <DropdownMenuItem onSelect={() => setTheme("dark")}>
                     <Moon className="mr-2 h-4 w-4" /> Dark
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -136,13 +136,13 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                  <DropdownMenuItem onSelect={() => setTheme("light")}>
                     <Sun className="mr-2 h-4 w-4" /> Light
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                  <DropdownMenuItem onSelect={() => setTheme("dark")}>
                     <Moon className="mr-2 h-4 w-4" /> Dark
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setTheme("system")}>
+                  <DropdownMenuItem onSelect={() => setTheme("system")}>
                     <Laptop className="mr-2 h-4 w-4" /> System
                   </DropdownMenuItem>
                 </DropdownMenuContent>

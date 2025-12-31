@@ -494,7 +494,7 @@ const StockMarketWidget = () => {
             </div>
 
             {/* Sparkline chart */}
-            <div className="h-44 w-full bg-gradient-to-b from-background to-muted/20 rounded-xl p-0.5 border border-border/40 shadow-inner relative overflow-hidden group">
+            <div className="h-32 sm:h-44 w-full bg-gradient-to-b from-background to-muted/20 rounded-xl p-0.5 border border-border/40 shadow-inner relative overflow-hidden group">
               <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)] dark:bg-grid-slate-700/25 pointer-events-none"></div>
 
               <ResponsiveContainer width="100%" height="100%">
