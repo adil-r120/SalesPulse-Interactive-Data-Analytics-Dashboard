@@ -556,21 +556,24 @@ const StockMarketWidget = () => {
             </div>
 
             {/* Pagination dots (with remove capability) */}
-            <div className="flex justify-center items-center gap-1.5 pt-1 pb-1 max-w-full overflow-hidden">
-              {watchedStocks.map((stock, idx) => (
+            <div className="flex justify-center items-center gap-1 mt-4">
+              {watchedStocks.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => {
                     setCurrentIndex(idx);
                     setIsPlaying(false);
                   }}
-                  className={`transition-all duration-500 rounded-full !border-none !outline-none !p-0 ${idx === currentIndex
-                    ? '!w-1.5 !h-1.5 bg-primary shadow-sm shadow-primary/30 scale-110'
-                    : '!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] bg-muted-foreground/20 hover:bg-primary/40'
-                    }`}
-                  title={stock.name}
-                  aria-label={`Switch to ${stock.name}`}
-                />
+                  className="p-1 focus:outline-none hover:opacity-80 transition-opacity group/dot"
+                  title={watchedStocks[idx].name}
+                >
+                  <div
+                    className={`rounded-full transition-all duration-300 ${idx === currentIndex
+                      ? 'w-1.5 h-1.5 bg-primary shadow-sm shadow-primary/30'
+                      : 'w-1.5 h-1.5 bg-muted-foreground/20 group-hover/dot:bg-muted-foreground/40'
+                      }`}
+                  />
+                </button>
               ))}
             </div>
 
