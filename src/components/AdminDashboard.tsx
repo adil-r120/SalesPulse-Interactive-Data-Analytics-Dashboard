@@ -329,7 +329,7 @@ const AdminDashboard = () => {
                             <CardDescription>Manage all registered users and their permissions</CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <div className="rounded-md border overflow-x-auto">
+                            <div className="rounded-md border overflow-x-auto max-h-[450px] overflow-y-auto">
                                 <Table>
                                     <TableHeader>
                                         <TableRow>
@@ -465,7 +465,7 @@ const AdminDashboard = () => {
 
                             <div className="mt-8">
                                 <h3 className="text-lg font-medium mb-4">Recent Login Attempts</h3>
-                                <div className="rounded-md border overflow-x-auto">
+                                <div className="rounded-md border overflow-x-auto max-h-[450px] overflow-y-auto">
                                     <Table>
                                         <TableHeader>
                                             <TableRow>

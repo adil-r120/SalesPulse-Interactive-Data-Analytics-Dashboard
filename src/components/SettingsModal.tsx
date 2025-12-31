@@ -179,21 +179,21 @@ export function SettingsModal({ isOpen, onClose, initialTab = "account" }: Setti
 
                 <Tabs defaultValue={initialTab} className="flex-1 flex flex-col min-h-0">
                     <div className="px-6 pt-4">
-                        <TabsList className={`grid w-full ${user?.role === 'Admin' ? 'grid-cols-4' : 'grid-cols-5'}`}>
-                            <TabsTrigger value="account" className="flex items-center gap-2">
+                        <TabsList className="flex w-full overflow-x-auto no-scrollbar gap-2 h-auto p-1 justify-start">
+                            <TabsTrigger value="account" className="flex-shrink-0 flex items-center gap-2">
                                 Account
                             </TabsTrigger>
-                            <TabsTrigger value="preferences" className="flex items-center gap-2">
+                            <TabsTrigger value="preferences" className="flex-shrink-0 flex items-center gap-2">
                                 Preferences
                             </TabsTrigger>
-                            <TabsTrigger value="notifications" className="flex items-center gap-2">
+                            <TabsTrigger value="notifications" className="flex-shrink-0 flex items-center gap-2">
                                 Notifications
                             </TabsTrigger>
-                            <TabsTrigger value="appearance" className="flex items-center gap-2">
+                            <TabsTrigger value="appearance" className="flex-shrink-0 flex items-center gap-2">
                                 Appearance
                             </TabsTrigger>
                             {user?.role !== 'Admin' && (
-                                <TabsTrigger value="feedback" className="flex items-center gap-2">
+                                <TabsTrigger value="feedback" className="flex-shrink-0 flex items-center gap-2">
                                     My Feedback
                                 </TabsTrigger>
                             )}

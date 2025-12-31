@@ -140,7 +140,7 @@ export function EditProfileModal({ isOpen, onClose }: EditProfileModalProps) {
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[500px]">
                 <DialogHeader>
                     <DialogTitle>Edit Profile</DialogTitle>
                     <DialogDescription>
@@ -187,19 +187,19 @@ export function EditProfileModal({ isOpen, onClose }: EditProfileModalProps) {
                             <span className="text-xs text-muted-foreground">Click to upload (Max 2MB)</span>
                         </div>
 
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="name" className="text-right">
+                        <div className="flex flex-col sm:grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+                            <Label htmlFor="name" className="text-left sm:text-right font-medium sm:font-normal">
                                 Name
                             </Label>
                             <Input
                                 id="name"
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
-                                className="col-span-3"
+                                className="sm:col-span-3"
                             />
                         </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="email" className="text-right">
+                        <div className="flex flex-col sm:grid sm:grid-cols-4 items-center gap-2 sm:gap-4">
+                            <Label htmlFor="email" className="text-left sm:text-right font-medium sm:font-normal">
                                 Email
                             </Label>
                             <Input
@@ -207,7 +207,7 @@ export function EditProfileModal({ isOpen, onClose }: EditProfileModalProps) {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="col-span-3"
+                                className="sm:col-span-3"
                             />
                         </div>
                     </div>
