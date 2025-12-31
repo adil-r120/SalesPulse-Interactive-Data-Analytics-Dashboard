@@ -178,7 +178,7 @@ const SignupPage = () => {
 
     try {
       // Send signup request to backend API
-      const response = await fetch('/auth/signup', {
+      const response = await fetch('https://salespulse-interactive-data-analytics.onrender.com/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
