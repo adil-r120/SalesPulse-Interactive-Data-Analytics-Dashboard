@@ -21,7 +21,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 
 // Custom Components
@@ -125,7 +127,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                 })}
               </div>
 
-              {/* Dropdown menu for remaining tabs (Reports, Stock) */}
+              {/* Dropdown menu for remaining tabs (Reports, Stock) AND User Controls */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -133,7 +135,8 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                   </Button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>Menu</DropdownMenuLabel>
                   {tabs.filter(tab => !['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                     const Icon = tab.icon;
                     return (
@@ -147,12 +150,27 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
                       </DropdownMenuItem>
                     );
                   })}
+
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Theme</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    <Sun className="mr-2 h-4 w-4" /> Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    <Moon className="mr-2 h-4 w-4" /> Dark
+                  </DropdownMenuItem>
+
+                  <DropdownMenuSeparator />
+                  <div className="flex items-center justify-around p-2">
+                    <NotificationCenter />
+                    <UserProfile />
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
 
-            {/* User Controls Section */}
-            <div className="flex items-center space-x-2">
+            {/* User Controls Section - Hidden on mobile, moved to Dropdown */}
+            <div className="hidden md:flex items-center space-x-2">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-9 w-9">
@@ -177,9 +195,9 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               <UserProfile />
             </div>
           </div>
-        </div>
-      </div>
-    </nav>
+        </div >
+      </div >
+    </nav >
   );
 };
 
