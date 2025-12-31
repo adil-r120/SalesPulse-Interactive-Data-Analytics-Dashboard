@@ -653,8 +653,8 @@ const AIChatbox = () => {
 
       {/* Main Chat Window */}
       {isOpen && (
-        <Card className={`fixed z-40 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border-white/20 backdrop-blur-2xl bg-white/95 dark:bg-slate-950/95 overflow-hidden transition-all duration-300 
-          ${isMinimized ? 'h-16 w-72' : 'h-[550px] sm:h-[600px] w-[92vw] sm:w-[400px]'}
+        <Card className={`fixed z-50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border-white/20 backdrop-blur-2xl bg-white/95 dark:bg-slate-950/95 overflow-hidden transition-all duration-300 
+          ${isMinimized ? 'h-16 w-72' : 'h-[80vh] sm:h-[600px] w-[92vw] sm:w-[400px]'}
           bottom-20 right-4 sm:bottom-24 sm:right-6 rounded-2xl flex flex-col
         `}>
           {/* Header */}

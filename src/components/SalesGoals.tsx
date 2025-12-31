@@ -216,7 +216,7 @@ const SalesGoals = () => {
     <div className="space-y-6">
       <Tabs defaultValue="goals" className="w-full">
         {user?.role === "Admin" && (
-          <TabsList className="grid w-full grid-cols-2 mb-4">
+          <TabsList className="grid w-full grid-cols-2 mb-4 h-auto">
             <TabsTrigger value="goals">Sales Goals</TabsTrigger>
             <TabsTrigger value="admin">
               <Shield className="w-4 h-4 mr-2" />
@@ -228,7 +228,7 @@ const SalesGoals = () => {
         <TabsContent value="goals">
           <Card className="bg-gradient-card border-border/50 shadow-card">
             <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0">
                 <CardTitle className="text-lg flex items-center space-x-2">
                   <Target className="h-5 w-5" />
                   <span>Sales Goals & Targets</span>
@@ -236,7 +236,7 @@ const SalesGoals = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8"
+                  className="h-8 w-full sm:w-auto"
                   onClick={() => setIsAddingGoal(true)}
                 >
                   <Plus className="h-4 w-4 mr-2" />
