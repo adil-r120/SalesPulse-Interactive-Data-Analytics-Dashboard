@@ -354,19 +354,19 @@ const AdminDashboard = () => {
                                             </TableRow>
                                         ) : (
                                             users.map((user) => (
-                                                <TableRow key={user.id}>
-                                                    <TableCell>
+                                                <TableRow key={user.id} className="h-12 hover:bg-muted/50">
+                                                    <TableCell className="p-2">
                                                         <Checkbox
                                                             checked={selectedUsers.has(user.id)}
                                                             onCheckedChange={() => toggleSelectUser(user.id)}
                                                         />
                                                     </TableCell>
-                                                    <TableCell className="font-medium">{user.username}</TableCell>
-                                                    <TableCell className="text-sm text-muted-foreground">{user.email}</TableCell>
-                                                    <TableCell className="text-sm">{user.full_name || '-'}</TableCell>
-                                                    <TableCell>
+                                                    <TableCell className="font-medium p-2">{user.username}</TableCell>
+                                                    <TableCell className="text-sm text-muted-foreground p-2">{user.email}</TableCell>
+                                                    <TableCell className="text-sm p-2">{user.full_name || '-'}</TableCell>
+                                                    <TableCell className="p-2">
                                                         <Select value={user.role} onValueChange={(newRole) => handleRoleChange(user.id, newRole)}>
-                                                            <SelectTrigger className="w-[110px]">
+                                                            <SelectTrigger className="w-[100px] h-8 text-xs">
                                                                 <SelectValue />
                                                             </SelectTrigger>
                                                             <SelectContent>
@@ -376,21 +376,21 @@ const AdminDashboard = () => {
                                                             </SelectContent>
                                                         </Select>
                                                     </TableCell>
-                                                    <TableCell>
+                                                    <TableCell className="p-2">
                                                         {user.is_active ? (
-                                                            <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20">
+                                                            <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 py-0 h-6">
                                                                 <UserCheck className="h-3 w-3 mr-1" /> Active
                                                             </Badge>
                                                         ) : (
-                                                            <Badge variant="outline" className="bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-900/20">
+                                                            <Badge variant="outline" className="bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-900/20 py-0 h-6">
                                                                 <UserX className="h-3 w-3 mr-1" /> Inactive
                                                             </Badge>
                                                         )}
                                                     </TableCell>
-                                                    <TableCell className="text-right">
+                                                    <TableCell className="text-right p-2">
                                                         <AlertDialog>
                                                             <AlertDialogTrigger asChild>
-                                                                <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+                                                                <Button variant="ghost" size="sm" className="h-8 w-8 text-destructive hover:text-destructive p-0">
                                                                     <Trash2 className="h-4 w-4" />
                                                                 </Button>
                                                             </AlertDialogTrigger>

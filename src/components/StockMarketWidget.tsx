@@ -565,7 +565,7 @@ const StockMarketWidget = () => {
                     setIsPlaying(false);
                   }}
                   className={`transition-all duration-500 rounded-full !border-none !outline-none !p-0 ${idx === currentIndex
-                    ? '!w-2 !h-2 bg-primary shadow-sm shadow-primary/30 scale-125'
+                    ? '!w-1.5 !h-1.5 bg-primary shadow-sm shadow-primary/30 scale-110'
                     : '!w-1.5 !h-1.5 !min-w-[6px] !min-h-[6px] bg-muted-foreground/20 hover:bg-primary/40'
                     }`}
                   title={stock.name}

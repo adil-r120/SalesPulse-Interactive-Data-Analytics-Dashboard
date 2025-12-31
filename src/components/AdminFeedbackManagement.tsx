@@ -218,20 +218,20 @@ const AdminFeedbackManagement = () => {
     }
 
     return (
-        <div className="space-y-6 p-6">
+        <div className="space-y-6 p-4 sm:p-6">
             {/* Header */}
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0">
                 <div>
-                    <h2 className="text-3xl font-bold">Manage User Feedback</h2>
+                    <h2 className="text-2xl sm:text-3xl font-bold">Manage User Feedback</h2>
                     <p className="text-muted-foreground mt-1">View and respond to user feedback</p>
                 </div>
-                <div className="flex gap-2">
-                    <Button variant="outline" onClick={() => handleAutoArchive(30)}>
+                <div className="flex flex-wrap gap-2">
+                    <Button variant="outline" size="sm" onClick={() => handleAutoArchive(30)}>
                         Archive Old (30d)
                     </Button>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="outline">
+                            <Button variant="outline" size="sm">
                                 <Download className="w-4 h-4 mr-2" />
                                 Export
                             </Button>
@@ -247,7 +247,7 @@ const AdminFeedbackManagement = () => {
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Button variant="outline" onClick={handleShare}>
+                    <Button variant="outline" size="sm" onClick={handleShare}>
                         <Share2 className="w-4 h-4 mr-2" />
                         Share
                     </Button>
@@ -255,7 +255,7 @@ const AdminFeedbackManagement = () => {
             </div>
 
             {/* Filters */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                     <Select value={statusFilter} onValueChange={setStatusFilter}>
                         <SelectTrigger>
@@ -296,12 +296,12 @@ const AdminFeedbackManagement = () => {
                             <Card key={item.id} className={`transition-all ${item.status === 'resolved' ? 'opacity-80' : ''}`}>
                                 <CardContent className="p-4">
                                     <div className="flex justify-between items-start mb-2">
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex flex-wrap items-center gap-2">
                                             <Badge variant={item.rating >= 4 ? "default" : "destructive"} className="flex gap-1">
                                                 {item.rating} <Star className="h-3 w-3 fill-current" />
                                             </Badge>
                                             <span className="font-medium text-sm">{item.stock_symbol || 'General'}</span>
-                                            {item.user_email && <span className="text-xs text-muted-foreground">({item.user_email})</span>}
+                                            {item.user_email && <span className="text-xs text-muted-foreground break-all">({item.user_email})</span>}
                                         </div>
                                         <Badge variant="outline" className={
                                             item.status === 'resolved' ? "text-green-600 border-green-200 bg-green-50" :
