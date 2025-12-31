@@ -102,51 +102,55 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
               })}
             </div>
 
-            {/* Mobile Navigation - Visible only on mobile devices */}
-            <div className="md:hidden w-full flex items-center justify-between px-1">
-              {/* Visible Mobile Tabs (Icons Only) */}
-              <div className="flex space-x-2 bg-muted/50 p-1 rounded-lg">
+            {/* Mobile Navigation - Visible only on mobile devices (Premium Look) */}
+            <div className="md:hidden w-full flex items-center justify-between px-2">
+
+              {/* Visible Mobile Tabs (Minimalist Icons) */}
+              <div className="flex items-center gap-1">
                 {tabs.filter(tab => ['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                   const Icon = tab.icon;
+                  const isActive = activeTab === tab.id;
                   return (
                     <button
                       key={tab.id}
                       onClick={() => onTabChange(tab.id)}
                       className={`
-                        flex items-center justify-center p-2 rounded-md transition-all duration-200
-                        ${activeTab === tab.id
-                          ? 'bg-primary text-primary-foreground shadow-glow'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                        relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
+                        ${isActive
+                          ? 'text-primary bg-primary/10 scale-110'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                         }
                       `}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-5 h-5 pointer-events-none" />
+                      {isActive && (
+                        <span className="absolute -bottom-1 w-1 h-1 bg-primary rounded-full animate-in fade-in zoom-in" />
+                      )}
                       <span className="sr-only">{tab.label}</span>
                     </button>
                   );
                 })}
               </div>
 
-              {/* Dropdown menu for remaining tabs (Reports, Stock) AND User Controls */}
+              {/* Mobile Menu Button */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8">
-                    <Menu className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" className="h-10 w-10 text-muted-foreground hover:text-foreground">
+                    <Menu className="h-6 w-6" />
                   </Button>
                 </DropdownMenuTrigger>
-
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>Menu</DropdownMenuLabel>
+                <DropdownMenuContent align="end" className="w-64 p-2 rounded-xl border-border/50 shadow-xl backdrop-blur-xl bg-background/95">
+                  <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Navigation</DropdownMenuLabel>
                   {tabs.filter(tab => !['dashboard', 'data', 'add', 'goals'].includes(tab.id)).map((tab) => {
                     const Icon = tab.icon;
                     return (
                       <DropdownMenuItem
                         key={tab.id}
                         onClick={() => onTabChange(tab.id)}
-                        className={`flex items-center space-x-2 ${activeTab === tab.id ? 'bg-muted' : ''}`}
+                        className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer mb-1 ${activeTab === tab.id ? 'bg-primary/10 text-primary font-medium' : 'text-foreground hover:bg-muted'}`}
                       >
-                        <Icon className="h-4 w-4" />
-                        <span>{tab.label}</span>
+                        <Icon className="h-5 w-5" />
+                        <span className="text-sm">{tab.label}</span>
                       </DropdownMenuItem>
                     );
                   })}
