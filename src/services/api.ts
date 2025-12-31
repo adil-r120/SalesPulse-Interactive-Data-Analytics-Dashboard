@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE_URL = 'https://salespulse-interactive-data-analytics.onrender.com';
 
 // Sales record structure
 interface SalesRecordData {
