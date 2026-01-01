@@ -618,7 +618,7 @@ const SignupPage = () => {
                     id="terms"
                     checked={acceptTerms}
                     onCheckedChange={(checked) => setAcceptTerms(checked as boolean)}
-                    className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+                    className="h-4 w-4 shrink-0 text-green-600 focus:ring-green-500 border-gray-300 rounded"
                   />
                 </div>
                 <div className="ml-3 text-sm">
