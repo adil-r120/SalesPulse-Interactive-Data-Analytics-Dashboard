@@ -334,11 +334,14 @@ const AdminDashboard = () => {
                                     <TableHeader>
                                         <TableRow>
                                             <TableHead className="w-12">
-                                                <Checkbox
-                                                    className="h-4 w-4 shrink-0 border-primary"
-                                                    checked={selectedUsers.size === users.length && users.length > 0}
-                                                    onCheckedChange={toggleSelectAll}
-                                                />
+                                                <div className="w-fit flex items-center justify-center">
+                                                    <Checkbox
+                                                        style={{ width: '16px', height: '16px' }}
+                                                        className="h-4 w-4 min-h-[16px] min-w-[16px] shrink-0 border-primary"
+                                                        checked={selectedUsers.size === users.length && users.length > 0}
+                                                        onCheckedChange={toggleSelectAll}
+                                                    />
+                                                </div>
                                             </TableHead>
                                             <TableHead>Username</TableHead>
                                             <TableHead>Email</TableHead>
@@ -357,11 +360,14 @@ const AdminDashboard = () => {
                                             users.map((user) => (
                                                 <TableRow key={user.id} className="h-12 hover:bg-muted/50">
                                                     <TableCell className="p-2">
-                                                        <Checkbox
-                                                            className="h-4 w-4 shrink-0 border-primary"
-                                                            checked={selectedUsers.has(user.id)}
-                                                            onCheckedChange={() => toggleSelectUser(user.id)}
-                                                        />
+                                                        <div className="w-fit flex items-center justify-center">
+                                                            <Checkbox
+                                                                style={{ width: '16px', height: '16px' }}
+                                                                className="h-4 w-4 min-h-[16px] min-w-[16px] shrink-0 border-primary"
+                                                                checked={selectedUsers.has(user.id)}
+                                                                onCheckedChange={() => toggleSelectUser(user.id)}
+                                                            />
+                                                        </div>
                                                     </TableCell>
                                                     <TableCell className="font-medium p-2">{user.username}</TableCell>
                                                     <TableCell className="text-sm text-muted-foreground p-2">{user.email}</TableCell>
