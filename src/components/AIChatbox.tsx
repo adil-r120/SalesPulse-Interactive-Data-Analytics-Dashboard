@@ -654,7 +654,7 @@ const AIChatbox = () => {
       {/* Main Chat Window */}
       {isOpen && (
         <Card className={`fixed z-50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] border-white/20 backdrop-blur-2xl bg-white/95 dark:bg-slate-950/95 overflow-hidden transition-all duration-300 
-          ${isMinimized ? 'h-14 w-72' : 'h-[60vh] sm:h-[450px] w-[90vw] sm:w-[350px]'}
+          ${isMinimized ? 'h-14 w-72' : 'h-[80vh] sm:h-[600px] w-[90vw] sm:w-[380px]'}
           bottom-20 right-4 sm:bottom-[84px] sm:right-6 rounded-2xl flex flex-col
         `}>
           {/* Header */}
@@ -767,7 +767,7 @@ const AIChatbox = () => {
                       key={message.id}
                       className={`flex w-full ${message.sender === 'user' ? 'justify-end' : 'justify-start'} group animate-in slide-in-from-bottom-2 duration-300`}
                     >
-                      <div className={`flex max-w-[85%] ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'} items-start gap-2.5`}>
+                      <div className={`flex max-w-[90%] ${message.sender === 'user' ? 'flex-row-reverse' : 'flex-row'} items-start gap-2.5`}>
                         {/* Avatar */}
                         <Avatar className={`h-8 w-8 mt-1 border shadow-sm flex-shrink-0 ${message.sender === 'ai' ? 'bg-white border-indigo-200' : 'bg-blue-600 border-blue-600'}`}>
                           {message.sender === 'ai' ? (
@@ -780,7 +780,7 @@ const AIChatbox = () => {
                         {/* Bubble */}
                         <div className={`flex flex-col ${message.sender === 'user' ? 'items-end' : 'items-start'}`}>
                           <div
-                            className={`px-4 py-3 rounded-2xl shadow-sm text-sm sm:text-base leading-relaxed relative ${message.sender === 'user'
+                            className={`px-3.5 py-2.5 rounded-2xl shadow-sm text-sm leading-relaxed relative ${message.sender === 'user'
                               ? 'bg-blue-600 text-white rounded-tr-sm'
                               : 'bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 text-slate-800 dark:text-slate-100 rounded-tl-sm'
                               }`}
