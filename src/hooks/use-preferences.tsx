@@ -47,19 +47,34 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     });
 
     // Apply Theme Side Effect
+    // Apply Theme Side Effect
     useEffect(() => {
         const root = window.document.documentElement;
-        root.classList.remove("light", "dark");
 
-        if (theme === "system") {
-            const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-            root.classList.add(systemTheme);
-        } else {
-            root.classList.add(theme);
-        }
+        const applyTheme = (targetTheme: Theme) => {
+            root.classList.remove("light", "dark");
+
+            if (targetTheme === "system") {
+                const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light";
+                root.classList.add(systemTheme);
+            } else {
+                root.classList.add(targetTheme);
+            }
+        };
+
+        applyTheme(theme);
         localStorage.setItem("sp_theme", theme);
+
+        // Listen for system changes if theme is system
+        if (theme === "system") {
+            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            const handleChange = () => applyTheme("system");
+
+            mediaQuery.addEventListener("change", handleChange);
+            return () => mediaQuery.removeEventListener("change", handleChange);
+        }
     }, [theme]);
 
     // Apply Font Size Side Effect
