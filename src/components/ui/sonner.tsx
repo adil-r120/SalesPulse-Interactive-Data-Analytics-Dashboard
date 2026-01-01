@@ -1,12 +1,10 @@
-import { useTheme } from "next-themes"
+import { usePreferences } from "@/hooks/use-preferences"
 import { Toaster as Sonner, toast } from "sonner"
 
-// Type definition for Toaster component props
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
-// Main Toaster component with theme integration
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const { theme = "system" } = usePreferences()
 
   return (
     <Sonner
@@ -28,5 +26,4 @@ const Toaster = ({ ...props }: ToasterProps) => {
   )
 }
 
-// Export Toaster component and toast function
 export { Toaster, toast }
